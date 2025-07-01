@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+    var product = Model;
+}
+@model iniskincare.Models.Product
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@product.Name - Details</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <div class="header">
+        <nav>
+            <h1>INI's SKINCARE</h1>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Home |</a></li>
+                <li><a asp-controller="Home" asp-action="Products">Products |</a></li>
+                <li><a asp-controller="Home" asp-action="About">About Us |</a></li>
+                <li><a asp-controller="Cart" asp-action="Cart">Cart |</a></li>
+                <li><a asp-controller="Auth" asp-action="Profile">Profile</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="cart-message" style="display: none;"></div>
+
+    <div class="details-container">
+        <p style="margin-bottom: 20px;">
+            <a href="/Home/Products" style="color:#007acc; text-decoration: none;">← Back to Products</a>
+        </p>
+
+        <div class="product-detail-wrapper">
+            <div class="product-image">
+                <img src="@Url.Content(product.ImageUrl)" alt="@product.Name" />
+            </div>
+
+            <div class="product-info">
+                <h1>@product.Name</h1>
+                <p class="price">₹@product.Price</p>
+
+                <div class="section">
+                    <h4>Ingredients</h4>
+                    <p>@product.Ingredients</p>
+                </div>
+
+                <div class="section">
+                    <h4>Description</h4>
+                    <p>@product.Description</p>
+                </div>
+
+                <form class="add-to-cart-form" data-productid="@product.Id">
+                    <button type="submit" class="btn-add-to-cart">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/js/Cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>INI's SKINCARE </title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    
+</head>
+<body class="background">
+    <div class="header">
+        <nav>
+            <h1 style="text-shadow:2px 2px 5px gray;">INI's SKINCARE</h1>
+
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Home |</a></li>
+                <li><a asp-controller="Home" asp-action="Products">Products |</a></li>
+                <li><a asp-controller="Home" asp-action="About">About Us |</a></li>
+                <li><a asp-controller="Cart" asp-action="Cart">Cart |</a></li>
+                <li><a asp-controller="Auth" asp-action="Profile">Profile</a></li>
+                
+                <li>
+                    @{
+                        string email = ViewBag.UserEmail;
+                        string username = email?.Split('@')[0];
+                    }
+                    @if (username != null)
+                    {
+                        <p style="color: white;">Welcome, @username!</p>
+                    }
+
+                </li>
+
+            </ul>
+        </nav>
+
+    </div>
+    <div class="box">
+        <h2>Just be confident <br />and <br />young forever.</h2>
+        <p>The scent of Inis instantly refreshes and makes you feel close to the sea – no matter where you are.</p>
+        <a asp-controller="Home" asp-action="Products" class="button">Shop Now</a>
+    </div>
+    <section class="index">
+        <div class="index-box">
+            <img src="images/m5.jpg" alt="Treatment Cream" class="index-img" />
+            <div class="feature-text">
+                <h2>Luxurious Moisturizing Cream</h2>
+                <p>Infused with the sparkling, clean scent of Inis, this cream leaves your skin soft, radiant, and pampered.</p>
+            </div>
+        </div>
+
+        <div class="index-box">
+            <img src="images/m9.jpg" alt="Travel Lotion" class="index-img" />
+            <div class="feature-text">
+                <h2>Handy Travel-Size Body Lotion</h2>
+                <p>Vitamin-rich seaweed extracts and minerals nourish your skin wherever you go – perfect for travel and daily use.</p>
+            </div>
+        </div>
+
+        <div class="index-box">
+            <img src="images/m7.jpg" alt="Body Butter" class="index-img" />
+            <div class="feature-text">
+                <h2>Why You'll Love Inis Body Butter</h2>
+                <ul>
+                    <li>Fresh, clean fragrance</li>
+                    <li>Deeply moisturizing</li>
+                    <li>Long-lasting hydration</li>
+                    <li>Rich and luxurious feel</li>
+                    <li>Perfect for dry skin</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 INI's Skincare. All rights reserved.</p>
+            <p>
+                <strong>Contact:</strong> +91 9035614047 | <a href="mailto:iniskincare@gmail.com">iniskincare@gmail.com</a>
+            </p>
+            <p class="footer-links">
+                <a href="/home/about">About</a> |
+                <a href="/home/contact">Contact</a> |
+                <a href="/home/privacy">Privacy</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

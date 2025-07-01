@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+} 
+@model List<iniskincare.Models.Product>
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>INI's SKINCARE </title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div id="cart-message">
+    </div>
+    <div class="header">
+        <nav>
+            <h1 style="text-shadow:2px 2px 5px gray;">INI's SKINCARE</h1>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Home |</a></li>
+                <li><a asp-controller="Home" asp-action="Products">Products |</a></li>
+                <li><a asp-controller="Home" asp-action="About">About Us |</a></li>
+                <li><a asp-controller="Cart" asp-action="Cart">Cart |</a></li>
+                <li><a asp-controller="Auth" asp-action="Profile">Profile</a></li>
+            </ul>
+        </nav>
+
+    </div>
+    <div class="searchbar">
+        <form method="get" action="/Home/Products">
+            <input type="text" name="searchTerm" placeholder="Search products..." value="@(Context.Request.Query["searchTerm"])" />
+            <button type="submit" style="font-size:14px;">Search</button>
+        </form>
+    </div>
+
+<div class="products-page">
+    <div class="sidebar">
+        <h2>Categories</h2>
+
+
+        @if (ViewBag.Categories is List<string> categories)
+        {
+            <ul>
+
+                @foreach (var category in categories)
+                {
+                    var jsParam = category.Replace(" ", "").ToLower();
+                    <li><button onclick="filterCategory('@jsParam')">@category</button></li>
+                }
+            </ul>
+        }
+
+    </div>
+        
+    <div class="products">
+       
+      @foreach (var product in Model)
+      {
+         <div class="product @product.Category category">
+             @* <img src="@Url.Content(product.ImageUrl)" alt="@product.Name" width="220" height="240" /> *@
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@product.Id">
+                        <img src="@Url.Content(product.ImageUrl)" alt="@product.Name" width="220" height="240" />
+                    </a>
+
+             <h2>@product.Name</h2>
+             <p>Price: ₹@product.Price</p>
+             <form class="add-to-cart-form" data-productid="@product.Id">
+             <button type="submit" class="add-to-cart">Add to Cart</button>
+             </form>
+         </div>
+      }
+     
+     
+    </div>
+       
+</div>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 INI's Skincare. All rights reserved.</p>
+            <p>
+                <strong>Contact:</strong> +91 9035614047 | <a href="mailto:iniskincare@gmail.com">iniskincare@gmail.com</a>
+            </p>
+            <p class="footer-links">
+                <a href="/home/about">About</a> |
+                <a href="/home/contact">Contact</a> |
+                <a href="/home/privacy">Privacy</a>
+            </p>
+        </div>
+      
+
+    </footer>
+    <script src="~/js/filter.js"></script>
+    <script src="/js/Cart.js" asp-append-version="true"></script>
+    <script>
+        console.log("🧪 showCartMessage defined?", typeof showCartMessage);
+    </script> 
+
+
+    </body>
+</html>

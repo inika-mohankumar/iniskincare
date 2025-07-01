@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>INI's SKINCARE - Login</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <div class="header">
+        <nav>
+            <h1 style="text-shadow:2px 2px 5px gray;">INI SKINCARE</h1>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Home |</a></li>
+                <li><a asp-controller="Home" asp-action="Products">Products |</a></li>
+                <li><a asp-controller="Home" asp-action="About">About Us |</a></li>
+                <li><a asp-controller="Cart" asp-action="Cart">Cart |</a></li>
+                <li><a asp-controller="Auth" asp-action="Profile">Profile</a></li>
+                <li><a asp-controller="Auth" asp-action="Logout">| Logout</a></li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="login-container">
+        <div class="login">
+            <h2>Welcome Back</h2>
+            <p>Please log in to continue</p>
+
+            <form id="login-form" method="post" action="/Auth/Profile">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-input" />
+                <div id="email-error" class="error-message"></div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-input" />
+                <div id="password-error" class="error-message"></div>
+
+                <button type="submit" id="login-message" class="btn-login">Login</button>
+            </form>
+
+            @if (!ViewData.ModelState.IsValid && ViewData.ModelState.Values.Any(v => v.Errors.Count > 0))
+            {
+                foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <div class="error-message" style="color:red;">@error.ErrorMessage</div>
+                }
+            }
+
+
+            <p id="login-message" class="login-status"></p>
+            <div class="ftr-login">
+                <a href="/">Forgot Password?</a>
+                <span>|</span>
+                <a href="/Auth/Register">Sign Up</a>
+
+                
+                @{
+                    var loggedInEmail = Context.Session.GetString("UserEmail");
+                }
+
+                @if (!string.IsNullOrEmpty(loggedInEmail))
+                {
+                    <p style="color:green;">Welcome, @loggedInEmail!</p>
+                }
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

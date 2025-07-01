@@ -1,0 +1,48 @@
+﻿@model iniskincare.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Register - INI's SKINCARE</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="login-container">
+        <div class="login">
+            <h2>Register</h2>
+            @* Show validation summary *@
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="error-message">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
+            }
+
+            <form asp-action="Register" asp-controller="Auth" method="post">
+                <label>Email</label>
+                <input asp-for="Email" class="form-input" />
+                <span asp-validation-for="Email" class="error-message"></span>
+
+                <label>Password</label>
+                <input asp-for="PasswordHash" type="password" class="form-input" />
+                <span asp-validation-for="PasswordHash" class="error-message"></span>
+
+                <button type="submit" class="btn-login">Register</button>
+            </form>
+
+            <p><a asp-controller="Auth" asp-action="Profile">Already have an account? Login</a></p>
+
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

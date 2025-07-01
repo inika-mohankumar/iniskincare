@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>INI's SKINCARE </title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="abouts">
+    <div class="header">
+        <nav>
+            <h1 style="text-shadow:2px 2px 5px gray;">INI's SKINCARE</h1>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Home |</a></li>
+                <li><a asp-controller="Home" asp-action="Products">Products |</a></li>
+                <li><a asp-controller="Home" asp-action="About">About Us |</a></li>
+                <li><a asp-controller="Cart" asp-action="Cart">Cart |</a></li>
+                <li><a asp-controller="Auth" asp-action="Profile">Profile</a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <section class="about-container">
+        <h1 class="about-heading">About Ini's</h1>
+        <p class="about-tagline">The scent of Inis instantly refreshes and makes you feel close to the sea – no matter where you are.</p>
+
+        <div class="about-content">
+            <div class="about-card">
+                <h2>Who We Are</h2>
+                <p>We are a family-owned skincare brand. Our signature fragrance “Inis the Energy of the Sea” captures the spirit of the ocean. Based in Tamil Nadu, India, we’ve been crafting natural skincare products inspired by the sea for over 40 years.</p>
+            </div>
+
+            <div class="about-card">
+                <h2>Our Inspiration</h2>
+                <p>Inspired by the beauty and energy of India’s coasts, we bring a fresh, clean fragrance that feels like a sunny day by the sea. Nutrient-rich seaweed powers our formulas, promoting soft, hydrated skin with every use.</p>
+            </div>
+
+            <div class="about-image-card">
+                <img src="~/images/m8.jpg" alt="Seaweed Extract" />
+                <div class="about-overlay">
+                    <h3>Rejuvenates with Seaweed Extracts</h3>
+                    <p>Shea butter, coconut oil and aloe vera leave skin silky smooth, while vitamin and antioxidant-rich argan and evening primrose oils help keep skin supple and conditioned.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 INI's Skincare. All rights reserved.</p>
+            <p>
+                <strong>Contact:</strong> +91 9035614047 | <a href="mailto:iniskincare@gmail.com">iniskincare@gmail.com</a>
+            </p>
+            <p class="footer-links">
+                <a href="/home/about">About</a> |
+                <a href="/home/contact">Contact</a> |
+                <a href="/home/privacy">Privacy</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
