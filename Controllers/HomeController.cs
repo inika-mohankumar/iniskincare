@@ -9,12 +9,7 @@ namespace iniskincare.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly IniskincareDbContext _context;
-
-        //public HomeController(IniskincareDbContext context)
-        //{
-        //    _context = context;
-        //}
+        
         public IActionResult Index()
         {
             string email = HttpContext.Session.GetString("UserEmail");

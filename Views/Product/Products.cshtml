@@ -58,7 +58,6 @@
       @foreach (var product in Model)
       {
          <div class="product @product.Category category">
-             @* <img src="@Url.Content(product.ImageUrl)" alt="@product.Name" width="220" height="240" /> *@
                     <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
                         <img src="@Url.Content(product.ImageUrl)" alt="@product.Name" width="220" height="240" />
                     </a>
@@ -92,8 +91,5 @@
     </footer>
     <script src="~/js/filter.js"></script>
     <script src="/js/Cart.js" asp-append-version="true"></script>
-    @* <script>
-        console.log("🧪 showCartMessage defined?", typeof showCartMessage);
-    </script>  *@
     </body>
 </html>
