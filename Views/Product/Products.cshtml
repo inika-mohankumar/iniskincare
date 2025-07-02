@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+  
 } 
 @model List<iniskincare.Models.Product>
 
@@ -18,7 +19,7 @@
             <h1 style="text-shadow:2px 2px 5px gray;">INI's SKINCARE</h1>
             <ul>
                 <li><a asp-controller="Home" asp-action="Index">Home |</a></li>
-                <li><a asp-controller="Home" asp-action="Products">Products |</a></li>
+                <li><a asp-controller="Product" asp-action="Products">Products |</a></li>
                 <li><a asp-controller="Home" asp-action="About">About Us |</a></li>
                 <li><a asp-controller="Cart" asp-action="Cart">Cart |</a></li>
                 <li><a asp-controller="Auth" asp-action="Profile">Profile</a></li>
@@ -27,7 +28,7 @@
 
     </div>
     <div class="searchbar">
-        <form method="get" action="/Home/Products">
+        <form method="get" action="/Product/Products">
             <input type="text" name="searchTerm" placeholder="Search products..." value="@(Context.Request.Query["searchTerm"])" />
             <button type="submit" style="font-size:14px;">Search</button>
         </form>
@@ -58,7 +59,7 @@
       {
          <div class="product @product.Category category">
              @* <img src="@Url.Content(product.ImageUrl)" alt="@product.Name" width="220" height="240" /> *@
-                    <a asp-controller="Home" asp-action="Details" asp-route-id="@product.Id">
+                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
                         <img src="@Url.Content(product.ImageUrl)" alt="@product.Name" width="220" height="240" />
                     </a>
 
@@ -86,15 +87,13 @@
                 <a href="/home/privacy">Privacy</a>
             </p>
         </div>
-      
+
 
     </footer>
     <script src="~/js/filter.js"></script>
     <script src="/js/Cart.js" asp-append-version="true"></script>
-    <script>
+    @* <script>
         console.log("🧪 showCartMessage defined?", typeof showCartMessage);
-    </script> 
-
-
+    </script>  *@
     </body>
 </html>
