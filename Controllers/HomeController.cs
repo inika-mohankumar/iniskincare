@@ -1,4 +1,4 @@
-﻿using iniskincare.Data;
+﻿using iniskincare.DataAccess;
 using iniskincare.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

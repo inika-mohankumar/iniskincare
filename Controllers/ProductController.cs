@@ -1,53 +1,33 @@
-﻿using iniskincare.Data;
+﻿
+using iniskincare.Domain.IProduct;
 using Microsoft.AspNetCore.Mvc;
 
 namespace iniskincare.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IniskincareDbContext _context;
+        private readonly IProductService _productService;
 
-        public ProductController(IniskincareDbContext context)
+        public ProductController(IProductService productService)
         {
-            _context = context;
+            _productService = productService;
         }
-        public IActionResult Products(string searchTerm)
+
+        public async Task<IActionResult> Products(string searchTerm)
         {
-            List<string> categories = new List<string>
-            {
-              "Body Care",
-              "Face Care",
-              "Lip Care",
-              "Hair Care",
-              "Sun Protection",
-              "All"
-            };
-            ViewBag.Categories = categories;
-
-            var allProducts = _context.Product.ToList();
-
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                searchTerm = searchTerm.ToLower();
-                allProducts = allProducts
-                    .Where(p => p.Name.ToLower().Contains(searchTerm))
-                    .ToList();
-            }
-
-            return View(allProducts);
+            ViewBag.Categories = _productService.GetCategories();
+            var products = await _productService.GetFilteredProductsAsync(searchTerm);
+            return View(products);
         }
 
         [HttpGet]
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var product = _context.Product.FirstOrDefault(p => p.Id == id);
+            var product = await _productService.GetByIdAsync(id);
             if (product == null)
-            {
                 return NotFound();
-            }
 
             return View(product);
         }
-        
     }
 }
