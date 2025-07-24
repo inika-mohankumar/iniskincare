@@ -1,15 +1,11 @@
-﻿using iniskincare.DataAccess;
-using iniskincare.Models;
+﻿using iniskincare.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using System.Text.Json;
 
 namespace iniskincare.Controllers
 {
     public class HomeController : Controller
     {
-        
         public IActionResult Index()
         {
             string email = HttpContext.Session.GetString("UserEmail");
@@ -30,7 +26,6 @@ namespace iniskincare.Controllers
         }
 
         public IActionResult About() => View();
-      
 
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using iniskincare.Domain.IProduct;
+﻿using iniskincare.Domain.IProduct;
 using Microsoft.AspNetCore.Mvc;
 
 namespace iniskincare.Controllers

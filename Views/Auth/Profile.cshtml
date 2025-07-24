@@ -19,7 +19,13 @@
                 <li><a asp-controller="Home" asp-action="About">About Us |</a></li>
                 <li><a asp-controller="Cart" asp-action="Cart">Cart |</a></li>
                 <li><a asp-controller="Auth" asp-action="Profile">Profile</a></li>
-                <li><a asp-controller="Auth" asp-action="Logout">| Logout</a></li>
+                @{
+                    var userEmail = Context.Session.GetString("UserEmail");
+                }
+                @if (!string.IsNullOrEmpty(userEmail))
+                {
+                    <li><a asp-controller="Auth" asp-action="Logout">| Logout</a></li>
+                }
 
             </ul>
         </nav>
@@ -47,6 +53,7 @@
                 {
                     <div class="error-message" style="color:red;">@error.ErrorMessage</div>
                 }
+                
             }
 
 

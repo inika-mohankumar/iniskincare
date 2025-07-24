@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using iniskincare.Domain.Entities;
-using iniskincare.Domain.Interfaces;
-using Microsoft.AspNetCore.Http;
-using System.Threading.Tasks;
+using iniskincare.Domain.Auth;
 
 namespace iniskincare.Controllers
 {

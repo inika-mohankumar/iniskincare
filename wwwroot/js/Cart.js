@@ -3,7 +3,7 @@
 
     document.querySelectorAll(".add-to-cart-form").forEach(form => {
         form.addEventListener("submit", function (e) {
-            e.preventDefault(); // prevent full page reload
+            e.preventDefault();
 
             const productId = this.dataset.productid;
 
@@ -12,7 +12,7 @@
             })
                 .then(response => {
                     if (response.ok) {
-                        console.log("✅ Item added");
+                        console.log("Item added");
                         
                         showCartMessage("Item added to cart!");
                     } else {
@@ -25,8 +25,6 @@
         });
     });
 });
-
-// ✅ Move this OUTSIDE — now globally accessible
 function showCartMessage(message) {
     const msg = document.getElementById("cart-message");
     if (msg) {

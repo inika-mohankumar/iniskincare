@@ -52,7 +52,7 @@
                                 <button type="submit" name="action" value="increase">+</button>
                             </form>
                         </div>
-                        <p>Total: ₹@(item.Product.Price* item.Quantity)</p>
+                        <p>Total: ₹@(item.Product.Price * item.Quantity)</p>
                         <form method="post" asp-controller="Cart" asp-action="RemoveFromCart">
                             <input type="hidden" name="cartItemId" value="@item.Id" />
                             <button type="submit" class="remove-btn">Remove</button>

@@ -1,8 +1,8 @@
 using iniskincare.DataAccess;
 using iniskincare.DataAccess.Repositories;
+using iniskincare.Domain.Auth;
 using iniskincare.Domain.Cart;
 using iniskincare.Domain.Entities;
-using iniskincare.Domain.Interfaces;
 using iniskincare.Domain.Interfaces.Cart;
 using iniskincare.Domain.Interfaces.IProduct;
 using iniskincare.Domain.IProduct;
@@ -44,7 +44,7 @@ app.UseHttpsRedirection();
 app.UseSession();
 app.UseRouting();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapStaticAssets();
 
@@ -52,7 +52,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();
 
